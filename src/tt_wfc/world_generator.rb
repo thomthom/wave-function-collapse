@@ -215,7 +215,9 @@ module Examples
           log { "Sampled #{tile} for #{tile.possibilities.size} possibilities. (#{tile.instance.persistent_id})" }
           tile.resolve_to(possibility)
 
-          possibility.prototype.cost += (possibility.prototype.weight * @random.rand)
+          # possibility.prototype.cost += (1.0 / (possibility.prototype.weight * @random.rand))
+          # possibility.prototype.cost += (1.0 / @random.rand(possibility.prototype.weight).to_f))
+          possibility.prototype.cost += (1.0 / possibility.prototype.weight.to_f)
         end
         propagate(tile)
       end
@@ -420,7 +422,9 @@ module Examples
       def generate_possibilities(prototypes)
         result = []
         prototypes.each { |prototype|
-          prototype.cost = (prototype.weight * @random.rand)
+          # prototype.cost = 1.0 / (prototype.weight * @random.rand)
+          # prototype.cost = 1.0 / @random.rand(prototype.weight).to_f
+          prototype.cost = 1.0 / prototype.weight.to_f
 
           edges = prototype.edges.dup
           4.times { |i|
