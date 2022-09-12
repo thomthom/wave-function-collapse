@@ -8,6 +8,11 @@ module Examples
         prototype.weight
       end
 
+      # @return [Float]
+      def cost
+        prototype.cost
+      end
+
     end
     # @!parse
     #   class Possibility

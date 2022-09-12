@@ -16,14 +16,18 @@ module Examples
       # @return [Integer]
       attr_accessor :weight
 
+      # @return [Float]
+      attr_accessor :cost
+
       # @return [Array<TileEdge>]
       attr_reader :edges
 
       # @param [Sketchup::ComponentInstance] instance
       # @param [Integer] weight
-      def initialize(instance, weight: 1)
+      def initialize(instance, weight: 1, cost: 0.0)
         @instance = instance
         @weight = weight
+        @cost = cost
         assets = AssetManager.new(instance.model) # KLUDGE! Circular dependency!
         @edges = EDGE_IDS.map { |edge_id|
           assets.deserialize_tile_edge(self, edge_id)

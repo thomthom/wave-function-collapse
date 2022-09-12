@@ -208,9 +208,14 @@ module Examples
         # If a tile was resolved as a result of constraints it's neighbors needs
         # to be processed.
         unless tile.resolved?
-          possibility = weighted_sample(tile.possibilities)
+          # possibility = weighted_sample(tile.possibilities)
+
+          possibility = tile.possibilities.min { |a, b| a.cost <=> b.cost }
+
           log { "Sampled #{tile} for #{tile.possibilities.size} possibilities. (#{tile.instance.persistent_id})" }
           tile.resolve_to(possibility)
+
+          possibility.prototype.cost += (possibility.prototype.weight * @random.rand)
         end
         propagate(tile)
       end
@@ -415,6 +420,8 @@ module Examples
       def generate_possibilities(prototypes)
         result = []
         prototypes.each { |prototype|
+          prototype.cost = (prototype.weight * @random.rand)
+
           edges = prototype.edges.dup
           4.times { |i|
             # :north, :east, :south, :west

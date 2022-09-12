@@ -77,7 +77,7 @@ module Examples
 
       # @return [String]
       def to_s
-        "#{@tile}:#{@edge_id}"
+        "TileEdge:#{@edge_id}:#{@tile}"
       end
       alias inspect to_s
 
