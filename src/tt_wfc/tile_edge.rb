@@ -58,11 +58,9 @@ module Examples
 
       # @param [TileEdge] other
       def can_connect_to?(other)
-        if symmetrical?
-          prototype == other.prototype
-        else
-          prototype == other.prototype && reversed? != other.reversed?
-        end
+        # Early cheap check for performance reasons.
+        return false unless prototype.type_id == other.prototype.type_id
+        symmetrical? ? true : reversed? != other.reversed?
       end
 
       # @return [Geom::Point3d]
