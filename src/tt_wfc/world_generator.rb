@@ -267,8 +267,7 @@ module Examples
       def sample_by_least_entropy(tiles)
         unresolved = tiles.select(&:unresolved?)
         cache = unresolved.map { |tile|
-          e = shannon_entropy(tile.possibilities)
-          [tile, e]
+          [tile, tile.shannon_entropy]
         }.sort { |a, b| a[1] <=> b[1] }
         # 0 = tile
         # 1 = weight
@@ -280,25 +279,6 @@ module Examples
         tile, entropy = cache.first
         options = cache.take_while { |t, e| e == entropy }
         sample(options.map(&:first))
-      end
-
-      # @param [Enumerable] enumerable
-      # @return [Float]
-      def shannon_entropy(enumerable)
-        # https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/
-        # https://github.com/robert/wavefunction-collapse
-        #
-        # Sums are over the weights of each remaining
-        # allowed tile type for the square whose
-        # entropy we are calculating.
-        #     shannon_entropy_for_square =
-        #       log(sum(weight)) -
-        #       (sum(weight * log(weight)) / sum(weight))
-        #
-        # https://github.com/mxgmn/WaveFunctionCollapse/blob/a6f79f0f1a4220406220782b71d3fcc73a24a4c2/Model.cs#L55-L67
-        sum_weight = enumerable.sum(&:weight).to_f
-        sum_times_log_weight = enumerable.sum { |n| n.weight * Math.log(n.weight) }
-        sum_weight - (sum_times_log_weight / sum_weight)
       end
 
       # @param [Tile] tile

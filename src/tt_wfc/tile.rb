@@ -39,6 +39,11 @@ module Examples
         possibilities.size
       end
 
+      # @return [Float]
+      def shannon_entropy
+        @shannon_entropy ||= compute_shannon_entropy
+      end
+
       def resolved?
         entropy == 1
       end
@@ -149,6 +154,24 @@ module Examples
         else
           instance.material = world.material_from_entropy(entropy)
         end
+        @shannon_entropy = nil
+      end
+
+      def compute_shannon_entropy
+        # https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/
+        # https://github.com/robert/wavefunction-collapse
+        #
+        # Sums are over the weights of each remaining
+        # allowed tile type for the square whose
+        # entropy we are calculating.
+        #     shannon_entropy_for_square =
+        #       log(sum(weight)) -
+        #       (sum(weight * log(weight)) / sum(weight))
+        #
+        # https://github.com/mxgmn/WaveFunctionCollapse/blob/a6f79f0f1a4220406220782b71d3fcc73a24a4c2/Model.cs#L55-L67
+        sum_weight = possibilities.sum(&:weight).to_f
+        sum_times_log_weight = possibilities.sum { |n| n.weight * Math.log(n.weight) }
+        sum_weight - (sum_times_log_weight / sum_weight)
       end
 
     end
