@@ -1,5 +1,6 @@
 require 'tt_wfc/constants/view'
 require 'tt_wfc/asset_manager'
+require 'tt_wfc/dpi/view'
 require 'tt_wfc/edge_prototype'
 require 'tt_wfc/tile_edge'
 require 'tt_wfc/tile_prototype'
@@ -57,6 +58,8 @@ module Examples
       # @param [Integer] y
       # @param [Sketchup::View] view
       def onMouseMove(flags, x, y, view)
+        view = HighDpiView.new(view)
+
         @mouse_position = Geom::Point3d.new(x, y)
         @mouse_over = pick_edge(view, x, y)
 
@@ -79,6 +82,8 @@ module Examples
       # @param [Integer] y
       # @param [Sketchup::View] view
       def onLButtonDown(flags, x, y, view)
+        view = HighDpiView.new(view)
+
         @mouse_left_button_down = Geom::Point3d.new(x, y)
         @mouse_drag = false
 
@@ -91,6 +96,8 @@ module Examples
       # @param [Integer] y
       # @param [Sketchup::View] view
       def onLButtonUp(flags, x, y, view)
+        view = HighDpiView.new(view)
+
         @mouse_left_button_down = nil
         @mouse_drag = false
         view.invalidate
@@ -101,6 +108,8 @@ module Examples
       # @param [Integer] y
       # @param [Sketchup::View] view
       def getMenu(menu, flags, x, y, view)
+        view = HighDpiView.new(view)
+
         tile = pick_tile(view, x, y)
         if tile
           menu.add_item('Assign Tile Weight') do
@@ -195,6 +204,8 @@ module Examples
 
       # @param [Sketchup::View] view
       def draw(view)
+        view = HighDpiView.new(view)
+
         view.line_stipple = ''
 
         draw_weights(view, @tiles)
