@@ -59,6 +59,8 @@ module Examples
       # @param [Sketchup::View] view
       def onMouseMove(flags, x, y, view)
         view = HighDpiView.new(view)
+        x = DPI.to_logical(x)
+        y = DPI.to_logical(y)
 
         @mouse_position = Geom::Point3d.new(x, y)
         @mouse_over = pick_edge(view, x, y)
@@ -83,6 +85,8 @@ module Examples
       # @param [Sketchup::View] view
       def onLButtonDown(flags, x, y, view)
         view = HighDpiView.new(view)
+        x = DPI.to_logical(x)
+        y = DPI.to_logical(y)
 
         @mouse_left_button_down = Geom::Point3d.new(x, y)
         @mouse_drag = false
@@ -97,6 +101,8 @@ module Examples
       # @param [Sketchup::View] view
       def onLButtonUp(flags, x, y, view)
         view = HighDpiView.new(view)
+        x = DPI.to_logical(x)
+        y = DPI.to_logical(y)
 
         @mouse_left_button_down = nil
         @mouse_drag = false
@@ -109,6 +115,8 @@ module Examples
       # @param [Sketchup::View] view
       def getMenu(menu, flags, x, y, view)
         view = HighDpiView.new(view)
+        x = DPI.to_logical(x)
+        y = DPI.to_logical(y)
 
         tile = pick_tile(view, x, y)
         if tile
