@@ -76,7 +76,10 @@ module Examples
       def deserialize_tile_edge(tile, edge_id)
         edge_key = edge_id.to_s
         root = tile.definition.attribute_dictionary(Attr::DICT, false)
-        if root.attribute_dictionaries.nil?
+        if root.nil?
+          # No attribute data.
+          TileEdge.new(tile, edge_id)
+        elsif root.attribute_dictionaries.nil?
           # Legacy
           warn "Reading legacy data for #{self}"
           type = root[edge_key]
