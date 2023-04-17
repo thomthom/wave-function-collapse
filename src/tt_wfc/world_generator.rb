@@ -2,7 +2,7 @@ require 'tt_wfc/possibility'
 require 'tt_wfc/tile'
 require 'tt_wfc/tile_queue'
 
-module Examples
+module Experiment
   module WFC
 
     class WorldGenerator

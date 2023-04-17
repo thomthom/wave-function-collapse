@@ -1,4 +1,4 @@
-module Examples
+module Experiment
   module WFC
 
     class TileQueue

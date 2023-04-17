@@ -1,6 +1,6 @@
 require 'tt_wfc/tile_edge'
 
-module Examples
+module Experiment
   module WFC
 
     class TilePrototype
@@ -65,4 +65,4 @@ module Examples
     end # class
 
   end # module WFC
-end # module Examples
+end # module Experiment

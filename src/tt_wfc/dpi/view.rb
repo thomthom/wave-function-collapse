@@ -2,7 +2,7 @@ require 'tt_wfc/dpi/inputpoint'
 require 'tt_wfc/dpi/pick_helper'
 require 'tt_wfc/dpi'
 
-module Examples
+module Experiment
   module WFC
 
     # Shim that takes care of dealing monitor DPI.

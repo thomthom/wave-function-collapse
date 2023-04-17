@@ -3,7 +3,7 @@
 ## Profiling
 
 ```rb
-SKETCHUP_CONSOLE.hide; SpeedUp.profile { Examples::WFC.generate(35, 25) }
+SKETCHUP_CONSOLE.hide; SpeedUp.profile { Experiment::WFC.generate(35, 25) }
 ```
 
 ## Seeds

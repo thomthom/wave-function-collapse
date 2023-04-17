@@ -2,7 +2,7 @@ require 'tt_wfc/edge_prototype'
 require 'tt_wfc/tile_edge'
 require 'tt_wfc/tile_prototype'
 
-module Examples
+module Experiment
   module WFC
 
     class AssetManager

@@ -1,4 +1,4 @@
-module Examples
+module Experiment
   module WFC
 
     EdgePrototype = Struct.new(:type_id, :color, :symmetrical)

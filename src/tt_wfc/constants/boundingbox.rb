@@ -5,7 +5,7 @@
 #
 #-------------------------------------------------------------------------------
 
-module Examples
+module Experiment
   module WFC
 
     module BoundingBoxConstants

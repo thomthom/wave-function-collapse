@@ -1,7 +1,7 @@
 require 'sketchup.rb'
 require 'extensions.rb'
 
-module Examples # TODO: Change module name to fit the project.
+module Experiment
   module WFC
 
     unless file_loaded?(__FILE__)
@@ -15,4 +15,4 @@ module Examples # TODO: Change module name to fit the project.
     end
 
   end # module WFC
-end # module Examples
+end # module Experiment

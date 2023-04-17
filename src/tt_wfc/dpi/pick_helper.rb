@@ -3,7 +3,7 @@ require 'delegate'
 require 'tt_wfc/dpi/view'
 require 'tt_wfc/dpi'
 
-module Examples
+module Experiment
   module WFC
 
     # Shim that takes care of dealing monitor DPI.

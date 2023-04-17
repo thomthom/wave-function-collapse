@@ -4,11 +4,11 @@ require 'tt_wfc/asset_manager'
 require 'tt_wfc/tile_tool'
 require 'tt_wfc/world_generator'
 
-module Examples
+module Experiment
   module WFC
 
     # @example
-    #   generator = Examples::WFC.generator
+    #   generator = Experiment::WFC.generator
     #
     # @return [Generator, nil]
     def self.generator
@@ -74,7 +74,7 @@ module Examples
     end
 
     # @example Profiling
-    #   SpeedUp.profile { Examples::WFC.generate(10, 10) }
+    #   SpeedUp.profile { Experiment::WFC.generate(10, 10) }
     #
     # @param [Integer] width
     # @param [Integer] height
@@ -406,4 +406,4 @@ module Examples
     end
 
   end # module WFC
-end # module Examples
+end # module Experiment

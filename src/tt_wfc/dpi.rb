@@ -4,7 +4,7 @@ require 'tt_wfc/dpi/inputpoint'
 require 'tt_wfc/dpi/pick_helper'
 require 'tt_wfc/dpi/view'
 
-module Examples
+module Experiment
   module WFC
 
     module DPI

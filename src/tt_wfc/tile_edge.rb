@@ -1,6 +1,6 @@
 require 'tt_wfc/constants/boundingbox'
 
-module Examples
+module Experiment
   module WFC
 
     class TileEdge
@@ -112,4 +112,4 @@ module Examples
     end
 
   end # module WFC
-end # module Examples
+end # module Experiment
